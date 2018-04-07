@@ -1,3 +1,17 @@
+# Open MPI dependency
+
+apt-get install libopenmpi-dev
+
+# Ray Platform dependency
+
+rm -rf RayPlatform
+git clone https://github.com/sebhtml/RayPlatform.git
+
+# For metaRay, download genomes with https://github.com/DerrickWood/kraken 
+
+https://github.com/DerrickWood/kraken/blob/master/scripts/download_genomic_library.sh
+
+
 # Ray assembler
 
 Ray is a parallel de novo genome assembler that utilises the message-passing interface everywhere
@@ -245,5 +259,8 @@ see AUTHORS
 see Documentation/VISUAL_STUDIO.txt
 
 
+#Usage
+
+for i in *R1.fastq ; do j=${i/R1/R2}; k=${j/_R2.fastq/k_23mer} ; echo $i $j $k; mpiexec --allow-run-as-root -n 56 ./Ray -k 23 -p $i $j -search bacteria -search human -search viral -o $k > $k.log ;  done 
 
 
